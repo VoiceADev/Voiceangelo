@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+.gallery{
+    display: grid;
+	padding: 3.75vw;
+	grid-template-columns: auto auto auto auto auto;
+}
+@media (min-width: 600px) and (max-width: 950px){
+.gallery{
+    padding: 2vw;
+	}
+}
+@media (max-width: 440px){
+.gallery{
+    padding: 1vw;
+	}
+}
+.gallery img{
+    width: 18vw;
+	height: 12vw;
+	transition: 0.4s;
+
+}
+.gallery-cover img{
+    object-fit: cover;
+}
+.gallery img:hover{
+    transform: scale(0.7) rotate(-10deg);
+	cursor: pointer;
+    border-radius: 2vw;
+	
+}
+@media only screen and(max-width: 440px){
+    .gallery img{
+	    width: 18vw;
+	    height: 12vw;
+	    transition: 0.4s;
+}
+    
+    .gallery img:onclick{
+    transform: scale(0.7) rotate(-10deg);
+	cursor: pointer;
+    border-radius: 2vw;
+
+}
+}
+a{
+  text-decoration: none;
+  text-align: center;
+  margin-bottom: 3.75vw;
+}
+
+
+</style>
+
+</head>
+
+
+<!-- 
+
+0.052vw = 1px
+
+
+-->
+<body> 
+    <div id = "hey" class = "gallery gallery-cover">
+	<a id = "1" target = "_blank">
+    <img class = "image"id = "2" src = "bild1.PNG" alt = "hey"></img>
+	</a>
+	<a target = "_blank">
+	<img class = "image" src = "bild2.JPG" href = "bild2.JPG" alt = "hey"></img>
+	</a>
+    <a target = "_blank">
+	<img class = "image" src = "bild3.PNG" href = "bild3.PNG"alt = "hey"></img>
+	</a>
+	<a target = "_blank">
+	<img class = "image" src = "bild4.PNG" href = "bild4.PNG" alt = "hey"></img>
+	</a>
+	<a target = "_blank">
+	<img class = "image" src = "bild5.PNG" href = "bild5.PNG" alt = "hey"></img>
+	</div>
+</body>
+<script>
+    //const bild = document.getElementById("1");
+	//const bild1 = document.getElementById("2");
+	let element = document.getElementById('hey');
+    //.getAttribute för att få tag i ett attribut frånett element
+	//om skärmens viewport är mindre än 440 pixlar 
+	if(screen.width <= 440){
+	//lägger en click lyssnare på element diven 
+    element.addEventListener('click', (e) => {
+	    console.log(e.target.parentElement);
+        //.target tar fram element som har trycks på
+		//e är ett object sd
+        if(e.target.classList.contains('image')) {
+        setTimeout(() => {e.target.parentElement.href = e.target.getAttribute("src"); e.target.parentElement.click();}, 650);
+        }
+		
+    });
+	
+
+	}
+	
+	//screen.width ger ett tal 
+	/*
+	console.log(typeof screen.width);
+    if(screen.width <= 440){
+        bild1.addEventListener('click', () => {
+        setTimeout(() => {window.location = "bild1.JPG";}, 1750);
+        //window.location = "bild1.JPG";
+})  
+    }  
+	*/
+</script>
+
+
+</html>
